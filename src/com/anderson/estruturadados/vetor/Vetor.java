@@ -49,6 +49,14 @@ public class Vetor {
 			return false;
 		}
 	}
+	
+	// obtem elemento de uma posição
+	public String buscar(int posicao) {
+		if(!(posicao >= 0 && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+		return this.elementos[posicao];
+	}
 
 	// retorna o tamanho do vetor
 	public int getTamanho() {
