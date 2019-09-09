@@ -39,6 +39,7 @@ public class Vetor {
 	
 	// ADICIONAR ELEMENTO FINAL DO VETOR - OPÇÃO 3 (melhor opção)
 	public boolean adiciona(String elemento) {
+		this.aumentarCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
 			this.tamanho++;
@@ -48,12 +49,15 @@ public class Vetor {
 		}
 	}
 	
+	// adiciona um elemento em qualquer posição do vetor
 	public boolean adiciona(int posicao, String elemento) {
 		
 		// verifica se existe determinado elemento no vetor
 		if(!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
+		
+		this.aumentarCapacidade();
 		
 		// move todos os elementos
 		for(int i = this.tamanho -1; i >= posicao; i--) {
@@ -63,6 +67,18 @@ public class Vetor {
 		this.tamanho++;
 		
 		return true;
+	}
+	
+	// adiciona capacidade no vetor
+	private void aumentarCapacidade() {
+		if(this.tamanho == this.elementos.length) {
+			// cria um novo vetor com dobro de capacidade
+			String[] elementosNovos = new String[this.elementos.length *2];
+			for(int i = 0; i < this.elementos.length; i++) {
+				elementosNovos[i] = elementos[i];
+			}
+			this.elementos = elementosNovos;
+		}
 	}
 	
 	// obtem elemento de uma posição
