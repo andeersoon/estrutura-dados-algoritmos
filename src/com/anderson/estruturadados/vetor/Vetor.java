@@ -1,7 +1,5 @@
 package com.anderson.estruturadados.vetor;
 
-import java.util.Arrays;
-
 public class Vetor {
 	
 	// atributos
@@ -56,6 +54,16 @@ public class Vetor {
 			throw new IllegalArgumentException("Posição inválida");
 		}
 		return this.elementos[posicao];
+	}
+	
+	// verifica se existe determinado elemento no vetor
+	public int buscar(String elemento) {
+		for(int i = 0; i < this.tamanho; i++) {
+			if(this.elementos[i].equals(elemento)) {
+				return i;// retorna posição do elemento
+			}
+		}
+		return -1;// retorna uma posição que não existe
 	}
 
 	// retorna o tamanho do vetor
