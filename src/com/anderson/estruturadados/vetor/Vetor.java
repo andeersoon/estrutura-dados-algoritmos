@@ -104,6 +104,18 @@ public class Vetor {
 		return tamanho;
 	}
 	
+	// remove elemento do vetor
+	public void remover(int posicao) {
+		// verifica se existe determinado elemento no vetor
+		if (!(posicao >= 0 && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+		for(int i = posicao; i < this.tamanho -1; i++) {
+			this.elementos[i] = this.elementos[i+1];
+		}
+		this.tamanho--;
+	}
+	
 	// imprime totos os elementos dentro do vetor não nulos (forma mais simples, porém menos eficiente)
 	/*@Override
 	public String toString() {
